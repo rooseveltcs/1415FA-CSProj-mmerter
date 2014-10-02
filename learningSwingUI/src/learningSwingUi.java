@@ -20,11 +20,11 @@ public class learningSwingUi {
     }
  
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+    //    javax.swing.SwingUtilities.invokeLater(new Runnable() {
+           // public void run() {
             	makeGui();
-            }
-        });
+         //   }
+      //  });
     }
 }
 
