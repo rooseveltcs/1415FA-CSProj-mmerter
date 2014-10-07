@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +28,7 @@ public class learningSwingUi {
 	// panel that holds things inside the frame
 	private JPanel controlPanel;
 
-	// prepares the gui - why do I need this?
+	//creates the gui
 	public learningSwingUi() {
 		prepareGUI();
 	}
@@ -40,25 +39,22 @@ public class learningSwingUi {
 	}
 
 	private void prepareGUI() {
+		//initializes the frame
 		mainFrame = new JFrame("Java Learning Swing");
 		mainFrame.setSize(400, 400);
+		//sets the layout style
 		mainFrame.setLayout(new GridLayout(0, 3));
 
+		//initializes the components of the frame.
 		inputFieldOne = new JTextField();
 		inputFieldTwo = new JTextField();
 		resultLabel = new JLabel("results here");
 		placeholderLabel = new JLabel("Welcome!");
 		errorLabel = new JLabel("Errors show here");
-
-		// statusLabel.setSize(100,100);
-		mainFrame.addWindowListener(new WindowAdapter() {
-		//	public void windowClosing(WindowEvent windowEvent) {
-			//	System.exit(0);
-			//}
-		});
+		//creates the control panel.
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new FlowLayout());
-
+		//adds everything to the frame.
 		mainFrame.add(inputFieldOne);
 		mainFrame.add(controlPanel);
 		mainFrame.add(inputFieldTwo);
@@ -69,20 +65,22 @@ public class learningSwingUi {
 	}
 
 	private void showActionListenerDemo() {
+		//adds text to the textfields, and adds the button.
 		inputFieldOne.setText("put one number here");
 		inputFieldTwo.setText("put another here");
-
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.cyan);
+		panel.setBackground(Color.green);
 		JButton okButton = new JButton("Add the numbers!");
+		//listens to the button. Do you hear the button?
 		okButton.addActionListener(new CustomActionListener());
 		panel.add(okButton);
 		controlPanel.add(panel);
-		mainFrame.setVisible(true);
 	}
 
 	class CustomActionListener implements ActionListener {
+		//does something when the button is clicked.
 		public void actionPerformed(ActionEvent e) {
+			//Prints the answer or an error if the person typed something silly.
 			String inputOne = inputFieldOne.getText();
 			String inputTwo = inputFieldTwo.getText();
 			int addedInput;
@@ -97,7 +95,8 @@ public class learningSwingUi {
 				resultLabel.setText("---");
 			}
 		}
-
+		
+		//decides whether the input typed by the user is a number or not.
 		public int testForBadInput(String input) {
 			int temp;
 			try {
